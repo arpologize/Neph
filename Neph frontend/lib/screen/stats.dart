@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:neph/screen/payment.dart';
 
 class Stats extends StatefulWidget{
   @override
@@ -70,9 +71,9 @@ class StatsState extends State<Stats>{
           ]),
           
       onPressed: () {
-        // MaterialPageRoute materialPageRoute =
-        //     MaterialPageRoute(builder: (BuildContext context) => Signin());
-        // Navigator.of(context).push(materialPageRoute);
+        MaterialPageRoute materialPageRoute =
+            MaterialPageRoute(builder: (BuildContext context) => Payment());
+        Navigator.of(context).push(materialPageRoute);
         int a = 0;
       },
       shape: new RoundedRectangleBorder(

@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:neph/screen/signup2.dart';
+
 
 class Profile extends StatefulWidget {
   @override

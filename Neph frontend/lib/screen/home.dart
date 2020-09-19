@@ -6,6 +6,7 @@ import 'package:neph/screen/plansche.dart';
 import 'package:neph/screen/plansuccess.dart';
 import 'package:neph/screen/profile.dart';
 import 'package:neph/screen/signin.dart';
+import 'package:neph/screen/stats.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -14,83 +15,87 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   //Medthod
-  Widget profile() {
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
-        Widget>[
-      IconButton(
-          icon: Icon(
-            Icons.account_circle,
-            size: 90,
-            color: Colors.white,
-          ),
-          color: Colors.teal.shade900,
-          onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (BuildContext context) => Profile()));
-          }),
-      SizedBox(
-        height: 55,
-      ),
-      InkWell(
-        child: Text(
-          "John Doe",
-          style: TextStyle(
-            fontFamily: 'Trebuchet MS',
-            fontSize: 18,
-            color: const Color(0xffffffff),
-          ),
-          textAlign: TextAlign.center,
-        ),
-        onTap: () {
-          MaterialPageRoute materialPageRoute =
-              MaterialPageRoute(builder: (BuildContext context) => Profile());
-          Navigator.of(context).push(materialPageRoute);
-        },
-      ),
-      InkWell(
-        child: Text(
-          "San Francisco, CA",
-          style: TextStyle(
-            fontFamily: 'Trebuchet MS',
-            fontSize: 15,
-            color: const Color(0xffffffff),
-          ),
-        ),
-        onTap: () {
-          MaterialPageRoute materialPageRoute =
-              MaterialPageRoute(builder: (BuildContext context) => Profile());
-          Navigator.of(context).push(materialPageRoute);
-        },
-      ),
-      SizedBox(
-        height: 15,
-      ),
-      vipButton()
-    ]);
+  Widget iconprofile() {
+    return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          IconButton(
+              icon: Icon(
+                Icons.account_circle,
+                size: 50,
+                color: Colors.lightBlue.shade50,
+              ),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => Profile()));
+              }),
+        ]);
   }
 
-  Widget vipButton() {
-    return Container(
-      width: 130,
-      height: 23,
-      child: RaisedButton(
-          color: Colors.grey.shade400,
-          child: Text('free member',
-              style: TextStyle(
-                fontFamily: 'Trebuchet MS',
-                fontSize: 15,
-                color: Colors.black,
+  Widget iconsetting() {
+    return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          IconButton(
+              icon: Icon(
+                Icons.settings,
+                size: 40,
+                color: Colors.white,
               ),
-              textAlign: TextAlign.left),
-          onPressed: () {
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => Profile()));
+              }),
+        ]);
+  }
+
+  Widget nametab() {
+    return Column(
+      children: [
+        InkWell(
+          child: Text(
+            "John Doe",
+            style: TextStyle(
+              fontFamily: 'Arial',
+              fontSize: 36,
+              color: const Color(0xffffffff),
+              fontWeight: FontWeight.w700,
+              height: 0.75,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          onTap: () {
+            MaterialPageRoute materialPageRoute =
+                MaterialPageRoute(builder: (BuildContext context) => Profile());
+            Navigator.of(context).push(materialPageRoute);
+          },
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        InkWell(
+          child: Padding(padding: EdgeInsets.only(right: 50),
+                      child: Text(
+              "free member",
+              style: TextStyle(
+                fontFamily: 'Segoe UI',
+                fontSize: 16,
+                color: const Color(0xffffffff),
+              ),
+              textAlign: TextAlign.left,
+            ),
+          ),
+          onTap: () {
             MaterialPageRoute materialPageRoute =
                 MaterialPageRoute(builder: (BuildContext context) => Payment());
             Navigator.of(context).push(materialPageRoute);
           },
-          shape: new RoundedRectangleBorder(
-              borderRadius: new BorderRadius.circular(30.0))),
+        ),
+      ],
     );
   }
 
@@ -99,7 +104,7 @@ class _HomeState extends State<Home> {
       width: 160,
       height: 90,
       child: RaisedButton(
-          color: const Color(0xff4f6165),
+          color: const Color(0xff394548),
           child: Text(
             'Plan Schedule',
             style: TextStyle(
@@ -108,7 +113,7 @@ class _HomeState extends State<Home> {
               color: const Color(0xffffffff),
             ),
             textAlign: TextAlign.left,
-          ),
+          ),elevation: 5,
           onPressed: () {
             MaterialPageRoute materialPageRoute =
                 MaterialPageRoute(builder: (BuildContext context) => Sucplan());
@@ -124,7 +129,7 @@ class _HomeState extends State<Home> {
       width: 160,
       height: 90,
       child: RaisedButton(
-          color: const Color(0xff4f6165),
+          color: const Color(0xff394548),
           child: Text(
             'Calories Calculator',
             style: TextStyle(
@@ -133,7 +138,7 @@ class _HomeState extends State<Home> {
               color: const Color(0xffffffff),
             ),
             textAlign: TextAlign.left,
-          ),
+          ),elevation: 5,
           onPressed: () {
             MaterialPageRoute materialPageRoute =
                 MaterialPageRoute(builder: (BuildContext context) => Plan());
@@ -144,37 +149,38 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Widget fucntionrow2() {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        planButton(),
-        SizedBox(
-          width: 20.0,
-        ),
-        calButton()
-      ],
-    );
-  }
-
   Widget statButton() {
     return Container(
       width: 340,
-      height: 130,
+      height: 150,
       child: RaisedButton(
-          color: const Color(0xff4f6165),
-          child: Text(
-            'STATS',
-            style: TextStyle(
-              fontFamily: 'Segoe UI',
-              fontSize: 20,
-              color: const Color(0xffffffff),
+          color: const Color(0xffffffff),
+          child: Padding( padding: EdgeInsets.only(right: 190,top: 40),
+                      child: Column(
+              children: [
+                Text(
+                                  'CurrentError',
+                                  style: TextStyle(
+                                    fontFamily: 'Segoe UI',
+                                    fontSize: 16,
+                                    color: const Color(0xff374f51),
+                                  ),
+                                  textAlign: TextAlign.left,
+                                ),Text(
+                              '20%',
+                              style: TextStyle(
+                                fontFamily: 'Segoe UI',
+                                fontSize: 35,
+                                color: const Color(0xff374f51),
+                              ),
+                              textAlign: TextAlign.left,
+                            ),
+              ],
             ),
-            textAlign: TextAlign.start,
           ),
           onPressed: () {
             MaterialPageRoute materialPageRoute =
-                MaterialPageRoute(builder: (BuildContext context) => Plan());
+                MaterialPageRoute(builder: (BuildContext context) => Stats());
             Navigator.of(context).push(materialPageRoute);
           },
           shape: new RoundedRectangleBorder(
@@ -187,7 +193,7 @@ class _HomeState extends State<Home> {
       width: 340,
       height: 65,
       child: RaisedButton(
-          color: const Color(0xff4f6165),
+          color: const Color(0xff394548),
           child: Text(
             'GO WORKOUT',
             style: TextStyle(
@@ -196,14 +202,74 @@ class _HomeState extends State<Home> {
               color: const Color(0xffffffff),
             ),
             textAlign: TextAlign.start,
-          ),
+          ),elevation: 5,
           onPressed: () {
             MaterialPageRoute materialPageRoute =
                 MaterialPageRoute(builder: (BuildContext context) => Plan());
             Navigator.of(context).push(materialPageRoute);
           },
           shape: new RoundedRectangleBorder(
-              borderRadius: new BorderRadius.circular(30.0))),
+              borderRadius: new BorderRadius.circular(45.0))),
+    );
+  }
+
+  Widget whiteback() {
+    return Align(
+      alignment: Alignment(0.0, 5.0),
+      child: Container(
+        height: 600,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(45), topRight: Radius.circular(45)),
+          color: Colors.lightBlue.shade50,
+          boxShadow: [
+            BoxShadow(
+              color: const Color(0x29000000),
+              offset: Offset(2, 2),
+              blurRadius: 3,
+            ),
+          ],
+        ),
+        child: Column(children: [
+          SizedBox(
+            height: 30,
+          ),
+          workoutButton(),
+          SizedBox(
+            height: 30,
+          ),
+          Row(
+            children: [
+              SizedBox(
+                width: 10,
+              ),
+              planButton(),
+              SizedBox(
+                width: 20,
+              ),
+              calButton()
+            ],
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          Align(alignment: Alignment.bottomLeft,
+                      child: Padding(padding: EdgeInsets.only(left: 35),
+                                              child: Text('STATS',
+              style: TextStyle(
+                fontFamily: 'Segoe UI',
+                fontSize: 21,
+                color: const Color(0xff000000),
+                letterSpacing: 2.1,
+                fontWeight: FontWeight.w700,
+              ),
+              textAlign: TextAlign.start
+            ),
+                      ),
+          ),SizedBox(height: 10,),
+          statButton(),
+        ]),
+      ),
     );
   }
 
@@ -211,38 +277,26 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [Colors.cyan.shade800, Colors.grey.shade900],
-          //colors: [Colors.purple.shade800, Colors.teal.shade600],
-        )),
-        child: Center(
+          child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(color: const Color(0xff394548)),
             child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Align(alignment: Alignment.topRight, child: profile()),
-            //showLogo(),
-            SizedBox(
-              height: 50.0,
+              children: [
+                Row(
+                  children: [
+                    iconsetting(),
+                    SizedBox(width: 250),
+                    iconprofile()
+                  ],
+                ),
+                SizedBox(height: 70),
+                Align(alignment: Alignment(-0.7, 0), child: nametab()),
+              ],
             ),
-            fucntionrow2(),
-            SizedBox(
-              height: 50.0,
-            ),
-            statButton(),
-            SizedBox(
-              height: 50.0,
-            ),
-            workoutButton(),
-
-            SizedBox(
-              height: 10.0,
-            ),
-          ],
-        )),
+          ),
+          whiteback()
+        ],
       )),
     );
   }

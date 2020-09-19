@@ -55,3 +55,55 @@ child: new Theme(
           style: new TextStyle(fontFamily: "Poppins", color: Colors.white),
         ));
   }
+
+
+
+  Widget topic(String day, String date, String month, String type) {
+    return Row(children: [
+      Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          SizedBox(
+            width: 10.0,
+          ),
+          whitebackground2(day),
+          SizedBox(
+            height: 5.0,
+          ),
+          whitebackground(date, month),
+        ],
+      ),
+      SizedBox(
+        width: 60.0,
+      ),
+      Text(
+        type,
+        style: TextStyle(
+          fontFamily: 'Segoe UI',
+          fontSize: 24,
+          color: const Color(0xff394548),
+        ),
+        textAlign: TextAlign.left,
+      ),
+    ]);
+  }
+
+
+
+  Widget whitebackground() {
+    return Container(
+      width: 90,
+      height: 70,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(21.0),
+        color: const Color(0xffffffff),
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0x29000000),
+            offset: Offset(3, 3),
+          ),
+        ],
+      ),
+      
+    );
+  }

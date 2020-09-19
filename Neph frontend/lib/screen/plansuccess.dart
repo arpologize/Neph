@@ -3,7 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:neph/screen/createplan.dart';
 import 'package:neph/screen/home.dart';
-import 'package:neph/screen/signup2.dart';
+import 'package:neph/screen/login.dart';
+import 'package:neph/screen/table.dart';
 
 class Sucplan extends StatefulWidget {
   @override
@@ -146,7 +147,8 @@ class _SucplanState extends State<Sucplan> {
           SizedBox(
             width: 60.0,
           ),
-          Text(
+          InkWell(
+          child: Text(
             type,
             style: TextStyle(
               fontFamily: 'Segoe UI',
@@ -155,9 +157,16 @@ class _SucplanState extends State<Sucplan> {
             ),
             textAlign: TextAlign.left,
           ),
+          onTap: () {
+            MaterialPageRoute materialPageRoute =
+                MaterialPageRoute(builder: (BuildContext context) => Tableex());
+            Navigator.of(context).push(materialPageRoute);
+          },
+        ),
+          
         ]));
   }
-
+  
   Widget blueboxadd(String day, String date, String month) {
     return Container(
         width: 327.0,

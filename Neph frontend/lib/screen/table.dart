@@ -1,8 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:neph/screen/createplan.dart';
-import 'package:neph/screen/home.dart';
 import 'package:neph/screen/plansuccess.dart';
 
 class Tableex extends StatefulWidget {
@@ -122,7 +120,7 @@ class _TableexState extends State<Tableex> {
     );
   }
 
-  Widget exercisename() {
+  Widget exercisename(String name) {
     return Container(
       width: 170,
       height: 30,
@@ -149,7 +147,7 @@ class _TableexState extends State<Tableex> {
             ),
             children: [
               TextSpan(
-                text: 'Bench Press',
+                text: name,
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w700,
@@ -163,7 +161,8 @@ class _TableexState extends State<Tableex> {
     );
   }
 
-  Widget exercisebackground() {
+  Widget exercisebackground(String name, String status, String lbs, String rep,
+      String sets, String namepic) {
     return Container(
         width: 300,
         height: 175,
@@ -184,10 +183,10 @@ class _TableexState extends State<Tableex> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(left: 20, right: 50, top: 13),
-                  child: exercisename(),
+                  child: exercisename(name),
                 ),
                 Text(
-                  'Done',
+                  status,
                   style: TextStyle(
                     fontFamily: 'Segoe UI',
                     fontSize: 18,
@@ -199,15 +198,125 @@ class _TableexState extends State<Tableex> {
                 ),
               ],
             ),
-            //imageex()
+            SizedBox(
+              height: 15,
+            ),
+            Row(
+              children: [
+                imageex(namepic),
+                Column(
+                  children: [
+                    Row(
+                      children: [
+                        valuebox(lbs),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Text('lbs.',
+                            style: TextStyle(
+                              fontFamily: 'Segoe UI',
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700,
+                              color: const Color(0xff394548),
+                            ))
+                      ],
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Row(
+                      children: [
+                        valuebox(rep),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Text('reps',
+                            style: TextStyle(
+                              fontFamily: 'Segoe UI',
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700,
+                              color: const Color(0xff394548),
+                            ))
+                      ],
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Row(
+                      children: [
+                        valuebox(sets),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Text('sets',
+                            style: TextStyle(
+                              fontFamily: 'Segoe UI',
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700,
+                              color: const Color(0xff394548),
+                            ))
+                      ],
+                    ),
+                  ],
+                )
+              ],
+            )
           ],
         ));
   }
 
-  Widget imageex() {
-    return Container(
-      width: 50,height: 25,
-      child: Image(image: AssetImage('images/benchpress.png')),
+  Widget imageex(String namepic) {
+    return Padding(
+      padding: const EdgeInsets.only(),
+      child: Image(
+        image: AssetImage('images/' + namepic + '.png'),
+        width: 180,
+        height: 100,
+      ),
+    );
+  }
+
+  Widget valuebox(String value) {
+    return Padding(
+      padding: const EdgeInsets.only(),
+      child: Container(
+        width: 55,
+        height: 25,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(21.0),
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: const Color(0x29000000),
+              offset: Offset(3, 3),
+              blurRadius: 6,
+            ),
+          ],
+        ),
+        child: Align(
+          alignment: Alignment.center,
+          child: Text.rich(
+            TextSpan(
+              style: TextStyle(
+                fontFamily: 'Segoe UI',
+                fontSize: 16,
+                color: const Color(0xff394548),
+                height: 0.8,
+              ),
+              children: [
+                TextSpan(
+                  text: value,
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ],
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ),
+      ),
     );
   }
 
@@ -241,7 +350,8 @@ class _TableexState extends State<Tableex> {
             'Workout',
             style: TextStyle(
               fontFamily: 'Segoe UI',
-              fontSize: 34,
+              fontSize: 40,
+              fontWeight: FontWeight.w700,
               color: const Color(0xff394548),
             ),
             textAlign: TextAlign.left,
@@ -250,7 +360,8 @@ class _TableexState extends State<Tableex> {
             type,
             style: TextStyle(
               fontFamily: 'Segoe UI',
-              fontSize: 24,
+              fontWeight: FontWeight.w700,
+              fontSize: 36,
               color: const Color(0xff394548),
             ),
             textAlign: TextAlign.left,
@@ -311,6 +422,7 @@ class _TableexState extends State<Tableex> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       resizeToAvoidBottomPadding: false,
       body: SingleChildScrollView(
         child: SafeArea(
@@ -324,7 +436,7 @@ class _TableexState extends State<Tableex> {
                   ),
                   returnpage(),
                   topic(
-                    'Mon',
+                    'Tue',
                     '9\n',
                     'Dec',
                     'Day 12',
@@ -332,7 +444,13 @@ class _TableexState extends State<Tableex> {
                   SizedBox(
                     height: 20,
                   ),
-                  exercisebackground()
+                  exercisebackground(
+                      'Brench Press', 'Done', '15', '12', '3', 'benchpress'),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  exercisebackground(
+                      'Leg Press', 'Doing', '60', '12', '3', 'legpress')
                 ],
               ),
             ),

@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:neph/screen/calculatorcal.dart';
 import 'package:neph/screen/payment.dart';
 import 'package:neph/screen/plansche.dart';
 import 'package:neph/screen/plansuccess.dart';
@@ -141,7 +142,7 @@ class _HomeState extends State<Home> {
           ),elevation: 5,
           onPressed: () {
             MaterialPageRoute materialPageRoute =
-                MaterialPageRoute(builder: (BuildContext context) => Plan());
+                MaterialPageRoute(builder: (BuildContext context) => Calculate());
             Navigator.of(context).push(materialPageRoute);
           },
           shape: new RoundedRectangleBorder(

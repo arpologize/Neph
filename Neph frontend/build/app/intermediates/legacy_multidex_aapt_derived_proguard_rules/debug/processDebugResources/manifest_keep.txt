@@ -1,0 +1,4 @@
+# Referenced at D:\Project_adv\Neph\Neph frontend\build\app\intermediates\merged_manifests\debug\AndroidManifest.xml:29
+-keep class androidx.core.app.CoreComponentFactory { <init>(); }
+# Referenced at D:\Project_adv\Neph\Neph frontend\build\app\intermediates\merged_manifests\debug\AndroidManifest.xml:29
+-keep class io.flutter.app.FlutterApplication { <init>(); }
